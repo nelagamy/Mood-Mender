@@ -13,5 +13,23 @@
         android:textSize="40sp"
         android:text="Talking Buddy">
     </TextView>
+    <Button
+        android:id="@+id/Add"
+        android:layout_width="100dp"
+        android:text="OK"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"/>
+    <Button
+        android:id="@+id/Schedule"
+        android:layout_width="100dp"
+        android:text="OK"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"/>
 
 </RelativeLayout>

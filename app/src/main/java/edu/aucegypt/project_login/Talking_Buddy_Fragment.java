@@ -7,6 +7,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.timepicker.MaterialTimePicker;
+import com.google.android.material.timepicker.TimeFormat;
+
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +66,50 @@ public class Talking_Buddy_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view;
+        view = inflater.inflate(R.layout.fragment_talking__buddy_, container, false);
+
+        Button ADD = (Button) view.findViewById(R.id.Add);
+        Button Schedule = (Button) view.findViewById(R.id.Schedule);
+
+
+        ADD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MaterialDatePicker datePicker = MaterialDatePicker.Builder.datePicker()
+                        .setTitleText("Select Date").setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                        .build();
+                datePicker.show(getFragmentManager(), "Material_Date_Picker");
+                datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                    @Override
+                    public void onPositiveButtonClick(Object selection) {
+                        Calendar calendar = Calendar.getInstance();
+                        MaterialTimePicker materialTimePicker = new MaterialTimePicker.Builder().setTimeFormat(TimeFormat.CLOCK_24H).
+                                setHour(calendar.get(Calendar.HOUR_OF_DAY))
+                                .setMinute(calendar.get(Calendar.MINUTE))
+                                .build();
+                        materialTimePicker.show(getFragmentManager(), "Time");
+                        materialTimePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                int Hour  = materialTimePicker.getHour();
+                                int Minute = materialTimePicker.getMinute();
+                            }
+                        });
+                    }
+                    });
+                };
+        });
+        Schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_talking__buddy_, container, false);
+        return view;
     }
 }
