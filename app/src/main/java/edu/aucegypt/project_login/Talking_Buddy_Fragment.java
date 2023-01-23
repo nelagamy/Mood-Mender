@@ -1,7 +1,10 @@
 package edu.aucegypt.project_login;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,9 +14,11 @@ import android.widget.Button;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.datepicker.SingleDateSelector;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -78,15 +83,18 @@ public class Talking_Buddy_Fragment extends Fragment {
             public void onClick(View view) {
                 MaterialDatePicker datePicker = MaterialDatePicker.Builder.datePicker()
                         .setTitleText("Select Date").setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                        .setPositiveButtonText("Next")
                         .build();
                 datePicker.show(getFragmentManager(), "Material_Date_Picker");
-                datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                String next = "Next";
+                datePicker.addOnPositiveButtonClickListener (new MaterialPickerOnPositiveButtonClickListener() {
                     @Override
                     public void onPositiveButtonClick(Object selection) {
                         Calendar calendar = Calendar.getInstance();
                         MaterialTimePicker materialTimePicker = new MaterialTimePicker.Builder().setTimeFormat(TimeFormat.CLOCK_24H).
                                 setHour(calendar.get(Calendar.HOUR_OF_DAY))
                                 .setMinute(calendar.get(Calendar.MINUTE))
+                                .setPositiveButtonText("Confirm")
                                 .build();
                         materialTimePicker.show(getFragmentManager(), "Time");
                         materialTimePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
@@ -101,15 +109,35 @@ public class Talking_Buddy_Fragment extends Fragment {
                 };
         });
         Schedule.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                                        @Override
+                                        public void onClick(View view) {
+                                            showOptionsDialogue();
+                                        }
+
+            private void showOptionsDialogue() {
+                final String[] selected = {"male"};
+                                            String [] genders = {"one", "two", "three"};
+                                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                            builder.setTitle("Choose Gender");
+                                            builder.setSingleChoiceItems(genders, 0, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int which) {
+                                                    selected[0] = genders[which];
+                                                }
+                                            });
+                                            builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+                                                    dialogInterface.dismiss();
+                                                }
+                                            });
+                                            builder.show();
+
+
 
             }
         });
-
-
-
-        // Inflate the layout for this fragment
+                // Inflate the layout for this fragment
         return view;
     }
 }

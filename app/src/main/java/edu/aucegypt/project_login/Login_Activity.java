@@ -46,6 +46,8 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
+                //Intent intent = new Intent(Login_Activity.this, Home_Activity.class);
+                //startActivity(intent);
                 getAPI data = new getAPI();
                 data.execute(new String[]{"http://10.0.2.2:3000/users?User="+username.getText().toString()+"&Pass="+password.getText().toString()});
             }

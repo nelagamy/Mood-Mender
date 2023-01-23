@@ -2,4 +2,10 @@
     <string name="app_name">Project_login</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="Choices">
+        <item>22/10/2022, 10:11 am</item>
+        <item>22/11/2022, 10:12 am</item>
+        <item>22/11/2023, 10:14 am</item>
+        <item>23/11/2023, 10:15 am</item>
+    </string-array>
 </resources>
