@@ -18,6 +18,10 @@ import android.widget.Button;
  * create an instance of this fragment.
  */
 public class Experience_Fragment extends Fragment {
+    View view;
+    FragmentManager fm;
+    FragmentTransaction ft;
+    Fragment f;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,13 +64,26 @@ public class Experience_Fragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
 
         }
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        f = fm.findFragmentById(R.id.frag);
+        f= new Explore_buttons();
+
+        ft = fm.beginTransaction();
+        ft.replace(R.id.frag, f, "start");
+        ft.addToBackStack(null);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_experience_, container, false);
+        view = inflater.inflate(R.layout.fragment_experience_, container, false);
+        ft.commit();
 
+
+        return view;
     }
+
+
 }

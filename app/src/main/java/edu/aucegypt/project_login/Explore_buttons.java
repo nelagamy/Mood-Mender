@@ -1,20 +1,17 @@
 package edu.aucegypt.project_login;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.HttpResponse;
@@ -34,16 +31,18 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Events_Fragment#newInstance} factory method to
+ * Use the {@link Explore_buttons#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Events_Fragment extends Fragment {
-
-    View view;
-    ArrayList<String> event_data =  new ArrayList<String>();
-    ListView listing;
-
-
+public class Explore_buttons extends Fragment{
+    FragmentManager fm;
+    FragmentTransaction ft, ft2;
+    Fragment f, f2;
+    Button addB;
+    Button ExpB;
+    static ArrayList<String> msgs;
+    static ArrayList<String> sender;
+    static ArrayList<Integer> anoy;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -53,7 +52,7 @@ public class Events_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Events_Fragment() {
+    public Explore_buttons() {
         // Required empty public constructor
     }
 
@@ -63,11 +62,11 @@ public class Events_Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Events_Fragment.
+     * @return A new instance of fragment Explore_buttons.
      */
     // TODO: Rename and change types and number of parameters
-    public static Events_Fragment newInstance(String param1, String param2) {
-        Events_Fragment fragment = new Events_Fragment();
+    public static Explore_buttons newInstance(String param1, String param2) {
+        Explore_buttons fragment = new Explore_buttons();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -82,27 +81,9 @@ public class Events_Fragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view =  inflater.inflate(R.layout.fragment_events_, container, false);
-
-        display();
-
-        return view;
-    }
-
-    public void display()
-    {
-        getAPI data = new getAPI();
-        data.execute(new String[]{"http://10.0.2.2:3000/getEvents"});
 
     }
-
-    class getAPI extends AsyncTask<String,Void, JSONArray> {
+    class getAPI extends AsyncTask<String, Void, JSONArray> {
         JSONArray jArr;
 
         @SuppressLint("WrongThread")
@@ -121,7 +102,6 @@ public class Events_Fragment extends Fragment {
                 HttpResponse response = client.execute(request);
                 BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
                 String inputLine = in.readLine();
-
                 jArr = new JSONArray(inputLine);
 
 
@@ -130,63 +110,70 @@ public class Events_Fragment extends Fragment {
             }
             return jArr;
         }
+
         @Override
-        protected void onPostExecute(JSONArray jArr)
-        {
-            String Ename,Edate,Etime;
-            if(jArr.length() != 0)
-            {
-                for (int i = 0; i < jArr.length(); i++)
-                {
-                    try
-                    {
-                        Ename = jArr.getJSONObject(i).getString("E_name");
-                        Edate = jArr.getJSONObject(i).getString("E_date");
-                        Etime = jArr.getJSONObject(i).getString("E_time");
-                        event_data.add("- "+Ename+"\t "+"("+Edate+",\t"+Etime+")");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+        protected void onPostExecute(JSONArray jsonArray) {
+            int size = jArr.length();
+            for(int i = 0; i<size; i++){
+                try {
+                    String txt = jArr.getJSONObject(i).getString("msg");
+                    String nm = jArr.getJSONObject(i).getString("username");
+                    int an = jArr.getJSONObject(i).getInt("unknown");
+                    anoy.add(an);
+                    sender.add(nm);
+                    msgs.add(txt);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                EventsAdapter Events_adapter = new EventsAdapter();
-                listing =  view.findViewById(R.id.Events_list_view);
-                listing.setAdapter(Events_adapter);
+
             }
-            else
-            {
-                event_data.clear();
-                event_data.add("No events");
-            }
+            ft2.commit();
         }
     }
-    private class EventsAdapter extends BaseAdapter {
-        @Override
-        public int getCount() {
-            return event_data.size();
-        }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v;
+        msgs = new ArrayList<String>();
+        sender = new ArrayList<String>();
+        anoy = new ArrayList<Integer>();
+        v =inflater.inflate(R.layout.fragment_explore_buttons, container, false);
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        f = fm.findFragmentById(R.id.frag);
+        f= new Add_Post();
+        ft = fm.beginTransaction();
+        ft.replace(R.id.frag, f, "add_Posts");
+        ft.addToBackStack(null);
 
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
+        f2 = fm.findFragmentById(R.id.frag);
+        f2= new Explore_posts();
+        ft2 = fm.beginTransaction();
+        ft2.replace(R.id.frag, f2, "exp");
+        ft2.addToBackStack(null);
 
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
 
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        addB = v.findViewById(R.id.startPost);
+        ExpB = v.findViewById(R.id.explorePosts);
 
-            View view = getLayoutInflater().inflate(R.layout.list_events,null);
+        addB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            TextView event = view.findViewById(R.id.events);
+                ft.commit();
+            }
+        });
 
-            String[] arr = event_data.toArray(new String[0]);
-            event.setText(arr[position]);
+        ExpB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAPI api = new getAPI();
+                api.execute(new String[]{"http://10.0.2.2:3000/getPosts"});
 
-            return view;
+            }
+        });
 
-        }
+        return v;
     }
 }

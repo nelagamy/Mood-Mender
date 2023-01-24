@@ -2,10 +2,33 @@
     <string name="app_name">Project_login</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string-array name="Choices">
-        <item>22/10/2022, 10:11 am</item>
-        <item>22/11/2022, 10:12 am</item>
-        <item>22/11/2023, 10:14 am</item>
-        <item>23/11/2023, 10:15 am</item>
+
+    <string-array name="Reminders">
+        <item>Remember to give yourself some break from your tasks, an overwhelmed brain has no use</item>
+        <item>Remember to stay hydrated,it will help your brain performance as well as your health </item>
+        <item>Remember to have a good amount of sleep, your brain need to rest just like machines</item>
+        <item>Remember to ask for help when needed, as humans we complement each other</item>
+    </string-array>
+
+    <string-array name="Happy_Q">
+        <item>If you can smile, you can be the light, be a beacon of light for someone</item>
+        <item>Very little is needed to make a happy life, help others to achieve it if possible</item>
+    </string-array>
+
+
+    <string-array name="Sad_Q">
+        <item>Ask for help, every wolf needs to run with a wolf pack every now and then</item>
+        <item>Cheer up and stand strong, what the fire does not consume, will consume the fire</item>
+        <item>Its is okay, moods are like melodies. They go up, they go down and sometimes.</item>
+        <item>The sun is shining, you should too.</item>
+        <item>Keep trying, you will get there.</item>
+    </string-array>
+
+
+    <string-array name="Neutral_Q">
+        <item>If no one tells you something is impossible, then it is still possible, so GO DO IT</item>
+        <item>Forge onward, fear not and stand ready, your deeds shape your future</item>
+        <item>Until they stop you, keep going.</item>
+        <item>The focused mind can pierce through stone</item>
     </string-array>
 </resources>

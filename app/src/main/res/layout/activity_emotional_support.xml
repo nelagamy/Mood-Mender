@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Emotional_Support_Activity">
+    tools:context=".Emotional_Support_Activity"
+    android:background="@drawable/background">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout2"

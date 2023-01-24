@@ -5,27 +5,69 @@
     android:layout_height="match_parent"
     tools:context=".Talking_Buddy_Fragment"
     android:orientation="vertical"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background">
 
     <!-- TODO: Update blank fragment layout -->
+
     <Button
         android:id="@+id/Add"
-        android:layout_width="100dp"
-        android:text="ADD"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
+        android:layout_width="152dp"
+        android:layout_height="65dp"
+        android:backgroundTint="@color/teal_200"
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
         android:gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:layout_gravity="center"
+        android:text="Add"
+        android:textAllCaps="false"
+        android:textColor="#220460"
+        android:textSize="16dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"
+        app:cornerRadius="50dp"
+        app:strokeColor="#7354B1"
+        app:strokeWidth="2dp" />
+
     <Button
         android:id="@+id/Schedule"
-        android:layout_width="wrap_content"
-        android:text="Schedule"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
+        android:layout_width="152dp"
+        android:layout_height="65dp"
+        android:backgroundTint="@color/teal_200"
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
         android:gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:text="Schedule"
+        android:textAllCaps="false"
+        android:textColor="#220460"
+        android:textSize="16dp"
+        android:layout_gravity="center"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"
+        app:cornerRadius="50dp"
+        app:strokeColor="#7354B1"
+        app:strokeWidth="2dp" />
+
+    <Button
+        android:id="@+id/yourSchedule"
+        android:layout_width="152dp"
+        android:layout_height="65dp"
+        android:backgroundTint="@color/teal_200"
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="Your Schedules"
+        android:textAllCaps="false"
+        android:textColor="#220460"
+        android:textSize="16dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"
+        app:cornerRadius="50dp"
+        app:strokeColor="#7354B1"
+        app:strokeWidth="2dp" />
 
 
 </LinearLayout>
