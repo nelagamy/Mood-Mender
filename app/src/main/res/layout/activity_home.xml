@@ -9,7 +9,8 @@
     android:orientation="vertical"
     android:gravity="center"
     android:weightSum="100"
-    tools:context=".Home_Activity">
+    tools:context=".Home_Activity"
+    android:background="@drawable/background">
 
 
     <TextView
@@ -21,51 +22,91 @@
         android:textSize="36sp"
         android:textStyle="bold"
         android:layout_weight="5"
-        android:textColor="@color/purple_200">
+        android:textColor="#5E35B1"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp">
     </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_weight="45"
-        android:orientation="horizontal">
+        android:layout_weight="10"
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <Button
             android:id="@+id/emotional_B"
-            android:layout_width="190dp"
-            android:layout_height="60dp"
+            android:layout_width="152dp"
+            android:layout_height="65dp"
+            app:strokeWidth = "2dp"
+            app:strokeColor = "#7354B1"
+            android:backgroundTint="@color/teal_200"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
             android:text="Emotional Support"
-            android:textSize="18sp"
-            android:layout_marginStart="6dp"
-            android:backgroundTint="@color/purple_200">
+            android:textSize="12dp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            android:textAllCaps="false"
+            android:layout_marginRight="15dp"
+            app:cornerRadius="50dp"
+            android:textColor="#220460">
+
         </Button>
 
         <Button
             android:id="@+id/entertain_B"
-            android:layout_width="190dp"
-            android:layout_height="60dp"
+            android:layout_width="160dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="15dp"
+            app:strokeWidth = "2dp"
+            app:strokeColor = "#7354B1"
+            android:backgroundTint="@color/teal_200"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
             android:text="Entertainment"
-            android:textSize="18sp"
-            android:layout_marginStart="20dp"
-            android:backgroundTint="@color/purple_200">
+            android:textSize="12sp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            android:textAllCaps="false"
+            app:cornerRadius="50dp"
+            android:textColor="#220460">
+
         </Button>
     </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_weight="45"
+        android:hint="select your mood"
+        android:textColor="#442681"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none">
+        </AutoCompleteTextView>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/quote_B"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="#EFCFCF"
-        android:textColor="@color/black"
-        android:textSize="23dp"
+        android:backgroundTint="#E9FBFB"
+        android:textColor="#442681"
+        android:textSize="18dp"
         app:cornerRadius="20dp"
         app:strokeColor="@color/black"
         app:strokeWidth="2dp"
-        android:layout_weight="25"
+        android:layout_weight="20"
         android:text="quote"
         android:clickable="false"
+        android:visibility="invisible"
         android:textAllCaps="false">
     </Button>
 
@@ -74,15 +115,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="#EFCFCF"
-        android:textColor="@color/black"
-        android:textSize="23dp"
+        android:backgroundTint="#E9FBFB"
+        android:textColor="#442681"
+        android:textSize="18dp"
         app:cornerRadius="20dp"
         app:strokeColor="@color/black"
         app:strokeWidth="2dp"
-        android:layout_weight="25"
+        android:layout_weight="20"
         android:text="reminder"
         android:clickable="false"
+        android:visibility="invisible"
         android:textAllCaps="false">
     </Button>
 

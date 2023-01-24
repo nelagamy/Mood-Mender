@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background">
     <ListView
         android:id="@+id/lists1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:strokeColor="@color/black"
+        app:strokeColor="#7354B1"
         app:strokeWidth="2dp"
         >
 

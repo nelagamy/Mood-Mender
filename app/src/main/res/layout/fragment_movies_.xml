@@ -1,16 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Movies_Fragment">
+    tools:context=".Movies_Fragment"
+    android:orientation="vertical"
+    android:weightSum="100"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Recommendation"
+            android:textColor="#220460"
+            android:textSize="20dp"
+            android:layout_marginTop="25dp">
+        </TextView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/CaddB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/add_symbol"
+            android:layout_margin="16dp">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    </LinearLayout>
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:textSize="40sp"
-        android:text="Movies" />
+        android:layout_weight="20"
+        android:text="Movies:"
+        android:textColor="#220460"
+        android:layout_marginLeft="10dp"/>
+    <ListView
+        android:id="@+id/movies_list_view"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="20">
+    </ListView>
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_weight="20"
+        android:text="TvShows:"
+        android:textColor="#220460"
+        android:layout_marginLeft="10dp">
+    </TextView>
+    <ListView
+        android:id="@+id/TvShows_list_view"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:layout_width="match_parent">
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/rand"
+            android:layout_width="152dp"
+            android:layout_height="65dp"
+            app:strokeWidth = "2dp"
+            app:strokeColor = "#7354B1"
+            android:backgroundTint="@color/teal_200"
+            android:bottomLeftRadius="10dp"
+            android:bottomRightRadius="10dp"
+            android:text="Randomize"
+            android:textSize="16dp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            android:textAllCaps="false"
+            android:layout_marginRight="15dp"
+            android:textColor="#220460"
+            app:cornerRadius="50dp">
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

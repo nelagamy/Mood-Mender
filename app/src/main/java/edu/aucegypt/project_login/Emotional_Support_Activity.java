@@ -27,7 +27,6 @@ public class Emotional_Support_Activity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Experience"));
         tabLayout.addTab(tabLayout.newTab().setText("Talking Buddy"));
 
-
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
             @NonNull
             @Override

@@ -1,17 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Talking_Buddy_Fragment">
+    tools:context=".Talking_Buddy_Fragment"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="40sp"
-        android:text="Talking Buddy">
-    </TextView>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/Add"
+        android:layout_width="152dp"
+        android:layout_height="65dp"
+        android:backgroundTint="@color/teal_200"
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="Add"
+        android:textAllCaps="false"
+        android:textColor="#220460"
+        android:textSize="16dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"
+        app:cornerRadius="50dp"
+        app:strokeColor="#7354B1"
+        app:strokeWidth="2dp" />
+
+    <Button
+        android:id="@+id/Schedule"
+        android:layout_width="152dp"
+        android:layout_height="65dp"
+        android:backgroundTint="@color/teal_200"
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
+        android:gravity="center"
+        android:text="Schedule"
+        android:textAllCaps="false"
+        android:textColor="#220460"
+        android:textSize="16dp"
+        android:layout_gravity="center"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"
+        app:cornerRadius="50dp"
+        app:strokeColor="#7354B1"
+        app:strokeWidth="2dp" />
+
+    <Button
+        android:id="@+id/yourSchedule"
+        android:layout_width="152dp"
+        android:layout_height="65dp"
+        android:backgroundTint="@color/teal_200"
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="Your Schedules"
+        android:textAllCaps="false"
+        android:textColor="#220460"
+        android:textSize="16dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"
+        app:cornerRadius="50dp"
+        app:strokeColor="#7354B1"
+        app:strokeWidth="2dp" />
+
+
+</LinearLayout>
+

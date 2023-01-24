@@ -7,8 +7,13 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -16,6 +21,9 @@ public class Entertainment_Activity extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager viewPager;
+    Fragment fragment;
+    int displayed;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +36,7 @@ public class Entertainment_Activity extends AppCompatActivity {
 
         tabLayout.addTab(tabLayout.newTab().setText("Movies & Shows"));
         tabLayout.addTab(tabLayout.newTab().setText("Events"));
-        tabLayout.addTab(tabLayout.newTab().setText("Music"));
-        //tabLayout.addTab(tabLayout.newTab().setText("Home"));
+
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
             @NonNull
@@ -38,14 +45,13 @@ public class Entertainment_Activity extends AppCompatActivity {
                 switch (position)
                 {
                     case 0:
-                        Movies_Fragment movies = new Movies_Fragment();
-                        return movies;
+                        fragment = new Movies_Fragment();
+                        displayed = 0;
+                        return fragment;
                     case 1:
-                        Events_Fragment events = new Events_Fragment();
-                        return events;
-                    case 2:
-                        Music_Fragment music = new Music_Fragment();
-                        return music;
+                        fragment = new Events_Fragment();
+                        displayed  = 1;
+                        return fragment;
                     default:
                         return null;
                 }
@@ -80,5 +86,6 @@ public class Entertainment_Activity extends AppCompatActivity {
 
 
     }
+
 
 }
